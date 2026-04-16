@@ -1,8 +1,8 @@
-﻿#nullable enable
+#nullable enable
 
-namespace CleanArchitecture.Core.Utilities
+namespace CleanArchitecture.Utilities.Results
 {
-    public enum StatusCode
+    public enum ResultStatus
     {
         Success,
         Created,

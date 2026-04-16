@@ -2,7 +2,7 @@
 
 using CleanArchitecture.Core.Interfaces.Core;
 using CleanArchitecture.Core.Interfaces.Infrastructure;
-using CleanArchitecture.Core.Utilities;
+using CleanArchitecture.Utilities.Results;
 using System;
 
 namespace CleanArchitecture.Core.Services
@@ -16,17 +16,17 @@ namespace CleanArchitecture.Core.Services
             _healthCheckRepo = healthCheckRepo;
         }
 
-        public ServiceResult<bool> IsHealthy()
+        public Result<bool> IsHealthy()
         {
             try
             {
                 var isHealthy = _healthCheckRepo.IsHealthy();
-                return new ServiceResult<bool>(StatusCode.Success, isHealthy);
+                return new Result<bool>(ResultStatus.Success, isHealthy);
             }
             catch (Exception ex)
             {
                 // log exception
-                return new ServiceResult<bool>(StatusCode.InternalError, ex.Message);
+                return new Result<bool>(ResultStatus.InternalError, ex.Message);
             }
         }
     }

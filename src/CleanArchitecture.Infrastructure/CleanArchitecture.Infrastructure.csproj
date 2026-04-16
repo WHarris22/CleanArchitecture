@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.Utilities\CleanArchitecture.Utilities.csproj" />
     <ProjectReference Include="..\CleanArchitecture.Core\CleanArchitecture.Core.csproj" />
   </ItemGroup>
 

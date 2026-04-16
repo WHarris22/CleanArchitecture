@@ -5,8 +5,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.Utilities\CleanArchitecture.Utilities.csproj" />
-  </ItemGroup>
-
 </Project>

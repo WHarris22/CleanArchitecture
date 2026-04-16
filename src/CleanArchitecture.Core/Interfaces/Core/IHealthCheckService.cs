@@ -1,6 +1,6 @@
 ﻿#nullable enable
 
-using CleanArchitecture.Core.Utilities;
+using CleanArchitecture.Utilities.Results;
 
 namespace CleanArchitecture.Core.Interfaces.Core
 {
@@ -9,7 +9,7 @@ namespace CleanArchitecture.Core.Interfaces.Core
         /// <summary>
         /// Checks if the service layer is setup correctly
         /// </summary>
-        /// <returns>A new <see cref="ServiceResult{bool}"/> object</returns>
-        ServiceResult<bool> IsHealthy();
+        /// <returns>A new <see cref="Result{bool}"/> object</returns>
+        Result<bool> IsHealthy();
     }
 }

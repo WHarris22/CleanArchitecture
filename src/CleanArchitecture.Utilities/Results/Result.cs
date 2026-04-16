@@ -1,27 +1,27 @@
-﻿#nullable enable
+#nullable enable
 
 using System.Collections.Generic;
 
-namespace CleanArchitecture.Core.Utilities
+namespace CleanArchitecture.Utilities.Results
 {
-    public class ServiceResult
+    public class Result
     {
         #region constructors
 
-        public ServiceResult() { }
+        public Result() { }
 
-        public ServiceResult(StatusCode statusCode)
+        public Result(ResultStatus statusCode)
         {
             StatusCode = statusCode;
         }
 
-        public ServiceResult(StatusCode statusCode, string message)
+        public Result(ResultStatus statusCode, string message)
         {
             StatusCode = statusCode;
             Messages = new List<string> { message };
         }
 
-        public ServiceResult(StatusCode statusCode, IList<string> messages)
+        public Result(ResultStatus statusCode, IList<string> messages)
         {
             StatusCode = statusCode;
             Messages = messages;
@@ -34,7 +34,7 @@ namespace CleanArchitecture.Core.Utilities
         /// <summary>
         /// 
         /// </summary>
-        public StatusCode StatusCode { get; set; }
+        public ResultStatus StatusCode { get; set; }
 
         /// <summary>
         /// 
