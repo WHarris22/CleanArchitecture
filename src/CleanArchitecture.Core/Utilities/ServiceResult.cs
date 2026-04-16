@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+
+using System.Collections.Generic;
 
 namespace CleanArchitecture.Core.Utilities
 {
@@ -37,7 +39,7 @@ namespace CleanArchitecture.Core.Utilities
         /// <summary>
         /// 
         /// </summary>
-        public IList<string> Messages { get; set; }
+        public IList<string>? Messages { get; set; }
 
         #endregion
     }

@@ -1,4 +1,6 @@
-﻿namespace CleanArchitecture.Core.Interfaces.Infrastructure
+﻿#nullable enable
+
+namespace CleanArchitecture.Core.Interfaces.Infrastructure
 {
     public interface IHealthCheckRepository
     {

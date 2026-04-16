@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+
+using System.Collections.Generic;
 
 namespace CleanArchitecture.Core.Utilities
 {
@@ -26,6 +28,6 @@ namespace CleanArchitecture.Core.Utilities
 
         #endregion
         
-        public T Content { get; set; }
+        public T? Content { get; set; }
     }
 }

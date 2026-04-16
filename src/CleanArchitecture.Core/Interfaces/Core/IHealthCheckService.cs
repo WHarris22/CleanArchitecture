@@ -1,4 +1,6 @@
-﻿using CleanArchitecture.Core.Utilities;
+﻿#nullable enable
+
+using CleanArchitecture.Core.Utilities;
 
 namespace CleanArchitecture.Core.Interfaces.Core
 {

@@ -1,4 +1,6 @@
-﻿using CleanArchitecture.Core.Interfaces.Core;
+﻿#nullable enable
+
+using CleanArchitecture.Core.Interfaces.Core;
 using CleanArchitecture.Core.Interfaces.Infrastructure;
 using CleanArchitecture.Core.Utilities;
 using System;

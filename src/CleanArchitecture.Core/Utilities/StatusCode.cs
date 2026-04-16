@@ -1,4 +1,6 @@
-﻿namespace CleanArchitecture.Core.Utilities
+﻿#nullable enable
+
+namespace CleanArchitecture.Core.Utilities
 {
     public enum StatusCode
     {

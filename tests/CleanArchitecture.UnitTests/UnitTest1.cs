@@ -1,3 +1,5 @@
+#nullable enable
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CleanArchitecture.UnitTests
