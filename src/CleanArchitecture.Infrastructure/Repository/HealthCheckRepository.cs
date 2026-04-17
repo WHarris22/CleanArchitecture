@@ -1,6 +1,6 @@
 ﻿#nullable enable
 
-using CleanArchitecture.Core.Interfaces.Infrastructure;
+using CleanArchitecture.Domain.Repositories;
 
 namespace CleanArchitecture.Infrastructure.Repository
 {

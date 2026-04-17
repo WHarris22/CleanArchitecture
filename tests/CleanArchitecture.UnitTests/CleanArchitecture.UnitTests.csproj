@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
     <ProjectReference Include="..\..\src\CleanArchitecture.Utilities\CleanArchitecture.Utilities.csproj" />
   </ItemGroup>
 

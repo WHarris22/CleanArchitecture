@@ -42,5 +42,15 @@ namespace CleanArchitecture.Utilities.Results
         public IList<string>? Messages { get; set; }
 
         #endregion
+
+        #region static factory methods
+
+        public static Result Success() => new(ResultStatus.Success);
+
+        public static Result Invalid(string message) => new(ResultStatus.Invalid, message);
+
+        public static Result InternalError(string message) => new(ResultStatus.InternalError, message);
+
+        #endregion
     }
 }
