@@ -2,7 +2,7 @@
 
 using CleanArchitecture.Utilities.Results;
 
-namespace CleanArchitecture.Core.Interfaces.Core
+namespace CleanArchitecture.Core.HealthChecks
 {
     public interface IHealthCheckService
     {

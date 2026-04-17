@@ -1,11 +1,10 @@
 ﻿#nullable enable
 
-using CleanArchitecture.Core.Interfaces.Core;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.Utilities.Results;
 using System;
 
-namespace CleanArchitecture.Core.Services
+namespace CleanArchitecture.Core.HealthChecks
 {
     internal class HealthCheckService(IHealthCheckRepository healthCheckRepo) : IHealthCheckService
     {
