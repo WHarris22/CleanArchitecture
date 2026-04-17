@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CleanArchitecture.Infrastructure;
-using CleanArchitecture.Core;
-using CleanArchitecture.Infrastructure.Repository;
+using CleanArchitecture.Infrastructure.Extensions;
+using CleanArchitecture.Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +15,8 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<StockMarketContext>();
-    dbContext.EnsureSeedData();
+    var seeder = scope.ServiceProvider.GetRequiredService<StockMarketSeeder>();
+    seeder.Seed();
 }
 
 // Configure the HTTP request pipeline

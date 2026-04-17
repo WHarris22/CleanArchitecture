@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.Infrastructure.Repository;
 
-namespace CleanArchitecture.Infrastructure
+namespace CleanArchitecture.Infrastructure.Extensions
 {
     public static class DependencyInjection
     {
@@ -15,6 +15,7 @@ namespace CleanArchitecture.Infrastructure
                 options.UseInMemoryDatabase("StockMarketDemo"));
 
             services.AddScoped<IStockQuoteRepository, StockQuoteRepository>();
+            services.AddTransient<StockMarketSeeder>();
 
             return services;
         }

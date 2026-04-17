@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Core.HealthChecks;
 using CleanArchitecture.Core.StockMarkets;
 
-namespace CleanArchitecture.Core
+namespace CleanArchitecture.Core.Extensions
 {
     public static class DependencyInjection
     {
