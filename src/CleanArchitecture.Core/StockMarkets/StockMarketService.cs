@@ -9,14 +9,9 @@ using CleanArchitecture.Utilities.Results;
 
 namespace CleanArchitecture.Core.StockMarkets
 {
-    public class StockMarketService : IStockMarketService
+    public class StockMarketService(IStockQuoteRepository repository) : IStockMarketService
     {
-        private readonly IStockQuoteRepository _repository;
-
-        public StockMarketService(IStockQuoteRepository repository)
-        {
-            _repository = repository;
-        }
+        private readonly IStockQuoteRepository _repository = repository;
 
         public async Task<Result<IEnumerable<StockQuote>>> GetAllQuotesAsync()
         {

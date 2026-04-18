@@ -10,18 +10,11 @@ namespace CleanArchitecture.Utilities.Results
 
         public Result() { }
 
-        public Result(ResultStatus statusCode)
-        {
-            StatusCode = statusCode;
-        }
+        public Result(ResultStatus statusCode) : this(statusCode, (IList<string>?)null) { }
 
-        public Result(ResultStatus statusCode, string message)
-        {
-            StatusCode = statusCode;
-            Messages = new List<string> { message };
-        }
+        public Result(ResultStatus statusCode, string message) : this(statusCode, new List<string> { message }) { }
 
-        public Result(ResultStatus statusCode, IList<string> messages)
+        public Result(ResultStatus statusCode, IList<string>? messages)
         {
             StatusCode = statusCode;
             Messages = messages;

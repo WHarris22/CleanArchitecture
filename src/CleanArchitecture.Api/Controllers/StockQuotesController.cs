@@ -14,14 +14,9 @@ namespace CleanArchitecture.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockQuotesController : ControllerBase
+    public class StockQuotesController(IStockMarketService stockMarketService) : ControllerBase
     {
-        private readonly IStockMarketService _stockMarketService;
-
-        public StockQuotesController(IStockMarketService stockMarketService)
-        {
-            _stockMarketService = stockMarketService;
-        }
+        private readonly IStockMarketService _stockMarketService = stockMarketService;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StockQuoteResponse>>> Get()

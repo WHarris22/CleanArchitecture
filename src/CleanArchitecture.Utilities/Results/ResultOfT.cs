@@ -8,22 +8,17 @@ namespace CleanArchitecture.Utilities.Results
     {
         #region constructors
 
-        public Result(ResultStatus statusCode, T content)
+        public Result(ResultStatus statusCode, T content) : base(statusCode)
         {
-            StatusCode = statusCode;
             Content = content;
         }
 
-        public Result(ResultStatus statusCode, string message)
+        public Result(ResultStatus statusCode, string message) : base(statusCode, message)
         {
-            StatusCode = statusCode;
-            Messages = new List<string> { message };
         }
 
-        public Result(ResultStatus statusCode, IList<string> messages)
+        public Result(ResultStatus statusCode, IList<string> messages) : base(statusCode, messages)
         {
-            StatusCode = statusCode;
-            Messages = messages;
         }
 
         #endregion

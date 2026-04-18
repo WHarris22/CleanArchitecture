@@ -4,14 +4,9 @@ using CleanArchitecture.Infrastructure.Repository;
 
 namespace CleanArchitecture.Infrastructure.Extensions
 {
-    public class StockMarketSeeder
+    public class StockMarketSeeder(StockMarketContext context)
     {
-        private readonly StockMarketContext _context;
-
-        public StockMarketSeeder(StockMarketContext context)
-        {
-            _context = context;
-        }
+        private readonly StockMarketContext _context = context;
 
         public void Seed()
         {

@@ -9,14 +9,9 @@ using CleanArchitecture.Domain.Repositories;
 
 namespace CleanArchitecture.Infrastructure.Repository
 {
-    internal class StockQuoteRepository : IStockQuoteRepository
+    internal class StockQuoteRepository(StockMarketContext context) : IStockQuoteRepository
     {
-        private readonly StockMarketContext _context;
-
-        public StockQuoteRepository(StockMarketContext context)
-        {
-            _context = context;
-        }
+        private readonly StockMarketContext _context = context;
 
         public async Task<IEnumerable<StockQuote>> GetAllAsync()
         {
