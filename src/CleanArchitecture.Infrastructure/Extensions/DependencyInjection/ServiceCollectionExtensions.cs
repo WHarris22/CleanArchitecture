@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Domain.Repositories;
 using CleanArchitecture.Infrastructure.Repository;
 
-namespace CleanArchitecture.Infrastructure.Extensions
+namespace CleanArchitecture.Infrastructure.Extensions.DependencyInjection
 {
-    public static class DependencyInjection
+    public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {

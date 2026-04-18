@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CleanArchitecture.Infrastructure.Extensions.DependencyInjection;
 using CleanArchitecture.Infrastructure.Extensions;
-using CleanArchitecture.Core.Extensions;
+using CleanArchitecture.Core.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
