@@ -1,5 +1,3 @@
-#nullable enable
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +19,7 @@ namespace CleanArchitecture.Infrastructure.Repository
                 .ToListAsync();
         }
 
-        public async Task<StockQuote?> GetBySymbolAsync(string symbol)
+        public async Task<StockQuote> GetBySymbolAsync(string symbol)
         {
             return await _context.StockQuotes
                 .AsNoTracking()

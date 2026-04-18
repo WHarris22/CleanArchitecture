@@ -1,5 +1,3 @@
-#nullable enable
-
 namespace CleanArchitecture.Api.Models
 {
     public sealed record StockQuoteRequest

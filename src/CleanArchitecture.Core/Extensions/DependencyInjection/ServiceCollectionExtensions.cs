@@ -1,5 +1,3 @@
-#nullable enable
-
 using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Core.HealthChecks;
 using CleanArchitecture.Core.StockMarkets;

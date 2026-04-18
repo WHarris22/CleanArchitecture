@@ -1,5 +1,3 @@
-#nullable enable
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Domain.Repositories;

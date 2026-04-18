@@ -1,5 +1,3 @@
-#nullable enable
-
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Utilities.Results
@@ -23,6 +21,6 @@ namespace CleanArchitecture.Utilities.Results
 
         #endregion
         
-        public T? Content { get; set; }
+        public T Content { get; set; }
     }
 }

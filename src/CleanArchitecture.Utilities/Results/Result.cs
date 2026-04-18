@@ -1,5 +1,3 @@
-#nullable enable
-
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Utilities.Results
@@ -10,11 +8,14 @@ namespace CleanArchitecture.Utilities.Results
 
         public Result() { }
 
-        public Result(ResultStatus statusCode) : this(statusCode, (IList<string>?)null) { }
+        public Result(ResultStatus statusCode)
+        {
+            StatusCode = statusCode;
+        }
 
         public Result(ResultStatus statusCode, string message) : this(statusCode, new List<string> { message }) { }
 
-        public Result(ResultStatus statusCode, IList<string>? messages)
+        public Result(ResultStatus statusCode, IList<string> messages)
         {
             StatusCode = statusCode;
             Messages = messages;
@@ -32,7 +33,7 @@ namespace CleanArchitecture.Utilities.Results
         /// <summary>
         /// 
         /// </summary>
-        public IList<string>? Messages { get; set; }
+        public IList<string> Messages { get; set; }
 
         #endregion
 

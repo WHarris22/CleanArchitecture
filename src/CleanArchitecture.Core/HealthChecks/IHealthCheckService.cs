@@ -1,6 +1,4 @@
-﻿#nullable enable
-
-using CleanArchitecture.Utilities.Results;
+﻿using CleanArchitecture.Utilities.Results;
 
 namespace CleanArchitecture.Core.HealthChecks
 {

@@ -1,5 +1,3 @@
-#nullable enable
-
 using CleanArchitecture.Infrastructure.Repository;
 
 namespace CleanArchitecture.Infrastructure.Extensions

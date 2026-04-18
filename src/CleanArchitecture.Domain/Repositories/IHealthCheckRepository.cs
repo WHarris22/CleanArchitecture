@@ -1,5 +1,3 @@
-#nullable enable
-
 namespace CleanArchitecture.Domain.Repositories
 {
     public interface IHealthCheckRepository
