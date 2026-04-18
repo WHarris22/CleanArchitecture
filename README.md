@@ -15,6 +15,15 @@ Clean Architecture is a software design approach that helps create applications 
 - **Add features** - New functionality fits cleanly into the existing structure
 - **Maintain code** - Changes in one area don't break others
 
+### Main Principles
+
+- **Dependency Rule**: Source code dependencies point inward. Outer layers depend on inner layers, not the other way around.
+- **Separation of Concerns**: Each layer has a single responsibility, so business rules do not mix with data or UI logic.
+- **Dependency Inversion**: High-level modules depend on abstractions, not concrete implementations.
+- **Interface Boundaries**: Inner layers define interfaces, and outer layers implement them.
+- **Testability**: Business logic can be tested without UI, database, or infrastructure dependencies.
+- **Independent Frameworks**: The app should be able to switch UI, data storage, or external tools without rewriting core logic.
+
 ### Project Layers
 
 ```
