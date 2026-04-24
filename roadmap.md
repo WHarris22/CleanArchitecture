@@ -105,16 +105,43 @@ Create comprehensive documentation for architecture guidelines and coding standa
 - `CODE_STYLE.md` - Code formatting and style guidelines
 - `.editorconfig` - Editor configuration for consistent formatting
 
+### 5. OpenAPI Documentation
+**Status:** Planned
+**Priority:** Medium
+
+Enhance the API with OpenAPI/Swagger documentation and tooling.
+
+**Scope:**
+- Add API documentation generation to the ASP.NET Core API project
+- Configure Swagger/OpenAPI metadata and UI
+- Expose generated OpenAPI JSON documentation
+- Use XML comments for endpoint descriptions and request/response models
+
+**Benefits:**
+- Public API discovery and consumability
+- Auto-generated API contract for clients
+- Improved developer onboarding
+- Easier integration testing and validation
+
+**Implementation Steps:**
+1. Add `Swashbuckle.AspNetCore` package to the API project
+2. Register OpenAPI and Swagger services in `Program.cs`
+3. Configure XML comment file support and endpoint metadata
+4. Enable Swagger UI in development and optionally staging
+5. Validate the OpenAPI JSON document and UI routes
+
 ## 🎯 Implementation Order
 
 1. **Unit Test Coverage** (Foundation for future changes)
 2. **CQRS Pattern** (Major architectural improvement)
 3. **Fast Endpoints** (Performance and DX improvement)
-4. **Documentation** (Knowledge sharing and onboarding)
+4. **OpenAPI Documentation** (API discoverability and contract generation)
+5. **Documentation** (Knowledge sharing and onboarding)
 
 ## 📊 Success Metrics
 
 - **Documentation:** 100% of public APIs documented
+- **OpenAPI:** Swagger UI and OpenAPI JSON available for the API
 - **Testing:** 80%+ code coverage
 - **Performance:** Measure endpoint response times before/after FastEndpoints
 - **Maintainability:** Reduced complexity through CQRS separation
@@ -123,17 +150,6 @@ Create comprehensive documentation for architecture guidelines and coding standa
 ## 🔄 Dependencies
 
 - CQRS implementation should be done before FastEndpoints
+- OpenAPI documentation should be implemented alongside FastEndpoints or before final docs
 - Unit tests should be enhanced throughout all changes
 - Documentation should be updated as changes are implemented
-
-## 📅 Timeline
-
-- **Phase 1 (Week 1-2):** XML Documentation + Initial Test Coverage
-- **Phase 2 (Week 3-4):** CQRS Implementation
-- **Phase 3 (Week 5-6):** FastEndpoints Migration
-- **Phase 4 (Week 7-8):** Complete Test Coverage + Documentation
-
----
-
-*This roadmap will be updated as implementation progresses and priorities shift.*</content>
-<parameter name="filePath">c:\Users\willi\repos\clean-architecture\CleanArchitecture\ROADMAP.md
