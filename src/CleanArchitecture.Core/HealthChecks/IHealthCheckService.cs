@@ -2,12 +2,15 @@
 
 namespace CleanArchitecture.Core.HealthChecks
 {
+    /// <summary>
+    /// Provides a health check service for application runtime diagnostics.
+    /// </summary>
     public interface IHealthCheckService
     {
         /// <summary>
-        /// Checks if the service layer is setup correctly
+        /// Checks whether the core service dependencies are healthy.
         /// </summary>
-        /// <returns>A new <see cref="Result{bool}"/> object</returns>
+        /// <returns>A <see cref="Result{bool}"/> containing the health status.</returns>
         Result<bool> IsHealthy();
     }
 }

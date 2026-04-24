@@ -4,25 +4,7 @@ This document outlines planned improvements and enhancements for the Clean Archi
 
 ## 📋 Planned Changes
 
-### 1. XML Documentation Comments
-**Status:** Planned
-**Priority:** High
-
-Add comprehensive XML documentation comments to all public interface methods and classes.
-
-**Scope:**
-- All interfaces in `CleanArchitecture.Domain.Repositories`
-- All interfaces in `CleanArchitecture.Core.*`
-- Public API endpoints in controllers
-- Custom result types and enums
-
-**Benefits:**
-- Improved IDE IntelliSense
-- Better API documentation generation
-- Enhanced developer experience
-- Compliance with documentation standards
-
-### 2. Command/Query Separation Pattern (CQRS)
+### 1. Command/Query Separation Pattern (CQRS)
 **Status:** Planned
 **Priority:** High
 
@@ -50,7 +32,7 @@ Refactor the application to implement Command Query Responsibility Segregation (
 5. Update controllers to use custom dispatcher
 6. Separate read/write models
 
-### 3. Fast Endpoints Integration
+### 2. Fast Endpoints Integration
 **Status:** Planned
 **Priority:** Medium
 
@@ -75,7 +57,7 @@ Replace ASP.NET Core MVC controllers with FastEndpoints for improved performance
 4. Configure routing and validation
 5. Update Program.cs configuration
 
-### 4. Unit Test Coverage Enhancement
+### 3. Unit Test Coverage Enhancement
 **Status:** Planned
 **Priority:** High
 
@@ -103,7 +85,7 @@ Improve unit test coverage across all projects.
 - API endpoint tests
 - Validation tests
 
-### 5. Architecture Guidelines and Code Style Instructions
+### 4. Architecture Guidelines and Code Style Instructions
 **Status:** Planned
 **Priority:** Medium
 
@@ -125,11 +107,10 @@ Create comprehensive documentation for architecture guidelines and coding standa
 
 ## 🎯 Implementation Order
 
-1. **XML Documentation** (Quick win, immediate value)
-2. **Unit Test Coverage** (Foundation for future changes)
-3. **CQRS Pattern** (Major architectural improvement)
-4. **Fast Endpoints** (Performance and DX improvement)
-5. **Documentation** (Knowledge sharing and onboarding)
+1. **Unit Test Coverage** (Foundation for future changes)
+2. **CQRS Pattern** (Major architectural improvement)
+3. **Fast Endpoints** (Performance and DX improvement)
+4. **Documentation** (Knowledge sharing and onboarding)
 
 ## 📊 Success Metrics
 

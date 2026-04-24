@@ -1,11 +1,14 @@
 namespace CleanArchitecture.Domain.Repositories
 {
+    /// <summary>
+    /// Defines a repository health probe.
+    /// </summary>
     public interface IHealthCheckRepository
     {
         /// <summary>
-        /// Checks if the repository layer is setup correctly
+        /// Determines whether the repository dependencies are healthy and available.
         /// </summary>
-        /// <returns></returns>
+        /// <returns><c>true</c> if the repository is healthy; otherwise, <c>false</c>.</returns>
         bool IsHealthy();
     }
 }
