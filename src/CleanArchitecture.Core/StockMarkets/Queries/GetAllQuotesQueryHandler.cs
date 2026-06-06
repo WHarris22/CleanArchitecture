@@ -20,7 +20,8 @@ namespace CleanArchitecture.Core.StockMarkets.Queries
         /// </summary>
         public GetAllQuotesQueryHandler(IStockQuoteRepository repository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            ArgumentNullException.ThrowIfNull(repository);
+            _repository = repository;
         }
 
         /// <summary>

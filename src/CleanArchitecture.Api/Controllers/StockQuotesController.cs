@@ -30,6 +30,7 @@ namespace CleanArchitecture.Api.Controllers
         public async Task<ActionResult<IEnumerable<StockQuoteResponse>>> Get()
         {
             var result = await _mediator.QueryAsync(new GetAllQuotesQuery());
+
             return result.StatusCode == ResultStatus.Success
                 ? Ok(result.Content!.Select(ToResponse))
                 : Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to read stock quotes." }), statusCode: 500);
@@ -44,6 +45,7 @@ namespace CleanArchitecture.Api.Controllers
         public async Task<ActionResult<StockQuoteResponse>> Get(string symbol)
         {
             var result = await _mediator.QueryAsync(new GetQuoteBySymbolQuery(symbol));
+            
             return result.StatusCode switch
             {
                 ResultStatus.Success => Ok(ToResponse(result.Content!)),

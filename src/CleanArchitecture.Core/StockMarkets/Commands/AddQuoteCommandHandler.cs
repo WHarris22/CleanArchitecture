@@ -19,7 +19,8 @@ namespace CleanArchitecture.Core.StockMarkets.Commands
         /// </summary>
         public AddQuoteCommandHandler(IStockQuoteRepository repository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            ArgumentNullException.ThrowIfNull(repository);
+            _repository = repository;
         }
 
         /// <summary>

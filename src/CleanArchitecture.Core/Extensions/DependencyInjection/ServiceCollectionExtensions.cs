@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Core.HealthChecks;
 using CleanArchitecture.Core.Mediator;
-using MediatorImpl = CleanArchitecture.Core.Mediator.Mediator;
+using MediatorService = CleanArchitecture.Core.Mediator.Mediator;
 
 namespace CleanArchitecture.Core.Extensions.DependencyInjection
 {
@@ -23,7 +23,7 @@ namespace CleanArchitecture.Core.Extensions.DependencyInjection
             services.AddScoped<IHealthCheckService, HealthCheckService>();
             
             // Register mediator and auto-discover handlers
-            services.AddScoped<IMediator, MediatorImpl>();
+            services.AddScoped<IMediator, MediatorService>();
             RegisterHandlers(services);
 
             return services;

@@ -30,7 +30,7 @@ namespace CleanArchitecture.Core.StockMarkets.Commands
         public decimal ChangePercent { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddQuoteCommand"/> class.
+        /// Initialises a new instance of the <see cref="AddQuoteCommand"/> class.
         /// </summary>
         public AddQuoteCommand(string symbol, string companyName, decimal lastPrice, decimal changePercent)
         {

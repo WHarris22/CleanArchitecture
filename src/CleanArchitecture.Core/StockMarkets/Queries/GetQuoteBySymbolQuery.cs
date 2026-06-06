@@ -15,7 +15,7 @@ namespace CleanArchitecture.Core.StockMarkets.Queries
         public string Symbol { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetQuoteBySymbolQuery"/> class.
+        /// Initialises a new instance of the <see cref="GetQuoteBySymbolQuery"/> class.
         /// </summary>
         public GetQuoteBySymbolQuery(string symbol)
         {

@@ -17,7 +17,8 @@ namespace CleanArchitecture.Core.Mediator
         /// <param name="serviceProvider">The service provider for handler resolution.</param>
         public Mediator(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            ArgumentNullException.ThrowIfNull(serviceProvider);
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
