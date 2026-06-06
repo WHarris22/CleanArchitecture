@@ -1,6 +1,11 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using CleanArchitecture.Core.HealthChecks;
+using CleanArchitecture.Core.Mediator;
 using CleanArchitecture.Core.StockMarkets;
+using MediatorImpl = CleanArchitecture.Core.Mediator.Mediator;
 
 namespace CleanArchitecture.Core.Extensions.DependencyInjection
 {
@@ -18,8 +23,54 @@ namespace CleanArchitecture.Core.Extensions.DependencyInjection
         {
             services.AddScoped<IHealthCheckService, HealthCheckService>();
             services.AddScoped<IStockMarketService, StockMarketService>();
+            
+            // Register mediator and auto-discover handlers
+            services.AddScoped<IMediator, MediatorImpl>();
+            RegisterHandlers(services);
 
             return services;
+        }
+
+        /// <summary>
+        /// Auto-discovers and registers all command and query handlers.
+        /// </summary>
+        private static void RegisterHandlers(IServiceCollection services)
+        {
+            var assembly = typeof(ServiceCollectionExtensions).Assembly;
+            
+            // Register all command handlers
+            var commandHandlerType = typeof(ICommandHandler<,>);
+            var commandHandlers = assembly.GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => 
+                    i.IsGenericType && 
+                    i.GetGenericTypeDefinition() == commandHandlerType))
+                .ToList();
+
+            foreach (var handler in commandHandlers)
+            {
+                var handlerInterface = handler.GetInterfaces().First(i =>
+                    i.IsGenericType &&
+                    i.GetGenericTypeDefinition() == commandHandlerType);
+                
+                services.AddScoped(handlerInterface, handler);
+            }
+
+            // Register all query handlers
+            var queryHandlerType = typeof(IQueryHandler<,>);
+            var queryHandlers = assembly.GetTypes()
+                .Where(t => t.GetInterfaces().Any(i =>
+                    i.IsGenericType &&
+                    i.GetGenericTypeDefinition() == queryHandlerType))
+                .ToList();
+
+            foreach (var handler in queryHandlers)
+            {
+                var handlerInterface = handler.GetInterfaces().First(i =>
+                    i.IsGenericType &&
+                    i.GetGenericTypeDefinition() == queryHandlerType);
+                
+                services.AddScoped(handlerInterface, handler);
+            }
         }
     }
 }
