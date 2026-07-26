@@ -21,6 +21,7 @@ namespace CleanArchitecture.Infrastructure.Extensions.DependencyInjection
                 options.UseInMemoryDatabase("StockMarketDemo"));
 
             services.AddScoped<IStockQuoteRepository, StockQuoteRepository>();
+            services.AddScoped<IHealthCheckRepository, HealthCheckRepository>();
             services.AddTransient<StockMarketSeeder>();
 
             return services;
