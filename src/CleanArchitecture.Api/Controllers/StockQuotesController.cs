@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Api.Models;
-using CleanArchitecture.Core.StockMarkets;
+using CleanArchitecture.Core.Mediator;
+using CleanArchitecture.Core.StockMarkets.Commands;
+using CleanArchitecture.Core.StockMarkets.Queries;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Utilities.Results;
 
@@ -13,12 +15,12 @@ namespace CleanArchitecture.Api.Controllers
     /// <summary>
     /// Exposes stock quote API endpoints.
     /// </summary>
-    /// <param name="stockMarketService">The stock market service used to handle quote operations.</param>
+    /// <param name="mediator">The mediator used to dispatch commands and queries.</param>
     [Route("api/[controller]")]
     [ApiController]
-    public class StockQuotesController(IStockMarketService stockMarketService) : ControllerBase
+    public class StockQuotesController(IMediator mediator) : ControllerBase
     {
-        private readonly IStockMarketService _stockMarketService = stockMarketService;
+        private readonly IMediator _mediator = mediator;
 
         /// <summary>
         /// Retrieves all stock quotes.
@@ -27,7 +29,8 @@ namespace CleanArchitecture.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StockQuoteResponse>>> Get()
         {
-            var result = await _stockMarketService.GetAllQuotesAsync();
+            var result = await _mediator.QueryAsync(new GetAllQuotesQuery());
+
             return result.StatusCode == ResultStatus.Success
                 ? Ok(result.Content!.Select(ToResponse))
                 : Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to read stock quotes." }), statusCode: 500);
@@ -41,7 +44,8 @@ namespace CleanArchitecture.Api.Controllers
         [HttpGet("{symbol}")]
         public async Task<ActionResult<StockQuoteResponse>> Get(string symbol)
         {
-            var result = await _stockMarketService.GetQuoteBySymbolAsync(symbol);
+            var result = await _mediator.QueryAsync(new GetQuoteBySymbolQuery(symbol));
+            
             return result.StatusCode switch
             {
                 ResultStatus.Success => Ok(ToResponse(result.Content!)),
@@ -62,27 +66,15 @@ namespace CleanArchitecture.Api.Controllers
             if (request is null)
                 return BadRequest("Request body is required.");
 
-            try
-            {
-                var quote = new StockQuote(
-                    request.Symbol,
-                    request.CompanyName,
-                    request.LastPrice,
-                    request.ChangePercent,
-                    DateTime.UtcNow);
+            var command = new AddQuoteCommand(request.Symbol, request.CompanyName, request.LastPrice, request.ChangePercent);
+            var result = await _mediator.SendAsync(command);
 
-                var result = await _stockMarketService.AddQuoteAsync(quote);
-                return result.StatusCode switch
-                {
-                    ResultStatus.Created => CreatedAtAction(nameof(Get), new { symbol = result.Content!.Symbol }, ToResponse(result.Content)),
-                    ResultStatus.Invalid => BadRequest(result.Messages),
-                    _ => Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to add stock quote." }), statusCode: 500)
-                };
-            }
-            catch (ArgumentException ex)
+            return result.StatusCode switch
             {
-                return BadRequest(ex.Message);
-            }
+                ResultStatus.Created => CreatedAtAction(nameof(Get), new { symbol = result.Content!.Symbol }, ToResponse(result.Content)),
+                ResultStatus.Invalid => BadRequest(result.Messages),
+                _ => Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to add stock quote." }), statusCode: 500)
+            };
         }
 
         /// <summary>
@@ -103,3 +95,4 @@ namespace CleanArchitecture.Api.Controllers
         }
     }
 }
+
