@@ -28,7 +28,7 @@ namespace CleanArchitecture.Utilities.Results
         /// </summary>
         /// <param name="statusCode">The result status.</param>
         /// <param name="message">The associated message.</param>
-        public Result(ResultStatus statusCode, string message) : this(statusCode, new List<string> { message }) { }
+        public Result(ResultStatus statusCode, string message) : this(statusCode, [message]) { }
 
         /// <summary>
         /// Initializes a new instance of <see cref="Result"/> with a status code and multiple messages.

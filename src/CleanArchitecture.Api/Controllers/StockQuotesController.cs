@@ -33,7 +33,7 @@ namespace CleanArchitecture.Api.Controllers
 
             return result.StatusCode == ResultStatus.Success
                 ? Ok(result.Content!.Select(ToResponse))
-                : Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to read stock quotes." }), statusCode: 500);
+                : Problem(detail: string.Join("; ", result.Messages ?? ["Unable to read stock quotes."]), statusCode: 500);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace CleanArchitecture.Api.Controllers
             return result.StatusCode switch
             {
                 ResultStatus.Success => Ok(ToResponse(result.Content!)),
-                ResultStatus.NotFound => NotFound(result.Messages ?? new[] { "Stock quote not found." }),
+                ResultStatus.NotFound => NotFound(result.Messages ?? ["Stock quote not found."]),
                 ResultStatus.Invalid => BadRequest(result.Messages),
-                _ => Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to read stock quote." }), statusCode: 500)
+                _ => Problem(detail: string.Join("; ", result.Messages ?? ["Unable to read stock quote."]), statusCode: 500)
             };
         }
 
@@ -73,7 +73,7 @@ namespace CleanArchitecture.Api.Controllers
             {
                 ResultStatus.Created => CreatedAtAction(nameof(Get), new { symbol = result.Content!.Symbol }, ToResponse(result.Content)),
                 ResultStatus.Invalid => BadRequest(result.Messages),
-                _ => Problem(detail: string.Join("; ", result.Messages ?? new[] { "Unable to add stock quote." }), statusCode: 500)
+                _ => Problem(detail: string.Join("; ", result.Messages ?? ["Unable to add stock quote."]), statusCode: 500)
             };
         }
 
