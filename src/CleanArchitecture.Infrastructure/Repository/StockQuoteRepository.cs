@@ -19,11 +19,11 @@ namespace CleanArchitecture.Infrastructure.Repository
                 .ToListAsync();
         }
 
-        public async Task<StockQuote> GetBySymbolAsync(string symbol)
+        public Task<StockQuote> GetBySymbolAsync(string symbol)
         {
-            return await _context.StockQuotes
+            return _context.StockQuotes
                 .AsNoTracking()
-                .FirstOrDefaultAsync(q => q.Symbol == symbol.ToUpperInvariant());
+                .FirstOrDefaultAsync(q => q.Symbol.Equals(symbol, System.StringComparison.InvariantCultureIgnoreCase));
         }
 
         public async Task AddAsync(StockQuote quote)
