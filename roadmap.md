@@ -112,7 +112,41 @@ Create comprehensive documentation for architecture guidelines and coding standa
 - `CODE_STYLE.md` - Code formatting and style guidelines
 - `.editorconfig` - Editor configuration for consistent formatting
 
-### 5. OpenAPI Documentation
+### 5. Cancellation Token Support
+
+**Status:** Planned
+
+**Priority:** High
+
+Implement comprehensive cancellation token support across all async operations in the application.
+
+**Scope:**
+
+- Add `CancellationToken` parameters to all async methods in services, repositories, and handlers
+- Implement cancellation token propagation through the entire request pipeline
+- Update command and query handlers to support cancellation
+- Configure ASP.NET Core to propagate request cancellation tokens
+- Add proper cancellation handling in long-running operations
+
+**Benefits:**
+
+- Graceful handling of client disconnections
+- Reduced server resource waste
+- Better user experience for cancelled requests
+- Compliance with async best practices
+- Improved application responsiveness under load
+
+**Implementation Steps:**
+
+1. Update repository interfaces and implementations with `CancellationToken` parameters
+2. Update service layer methods with `CancellationToken` parameters
+3. Update command/query handlers with `CancellationToken` support
+4. Configure controller actions to pass `HttpContext.RequestAborted` tokens
+5. Update Entity Framework Core queries to accept cancellation tokens
+6. Add unit tests for cancellation scenarios
+7. Document cancellation token usage patterns
+
+### 6. OpenAPI Documentation
 **Status:** Planned
 **Priority:** Medium
 
@@ -141,9 +175,10 @@ Enhance the API with OpenAPI/Swagger documentation and tooling.
 
 1. ✅ **CQRS Pattern** (Completed 2026-06-06) - Major architectural improvement
 2. **Unit Test Coverage** (Foundation for future changes)
-3. **Fast Endpoints** (Performance and DX improvement)
-4. **OpenAPI Documentation** (API discoverability and contract generation)
-5. **Documentation** (Knowledge sharing and onboarding)
+3. **Cancellation Token Support** (Async best practices)
+4. **Fast Endpoints** (Performance and DX improvement)
+5. **OpenAPI Documentation** (API discoverability and contract generation)
+6. **Documentation** (Knowledge sharing and onboarding)
 
 ## 📊 Success Metrics
 
@@ -157,6 +192,7 @@ Enhance the API with OpenAPI/Swagger documentation and tooling.
 ## 🔄 Dependencies
 
 - CQRS implementation should be done before FastEndpoints
+- Cancellation token support should be added after CQRS implementation
 - OpenAPI documentation should be implemented alongside FastEndpoints or before final docs
-- Unit tests should be enhanced throughout all changes
+- Unit tests should be enhanced throughout all changes, especially for cancellation scenarios
 - Documentation should be updated as changes are implemented
